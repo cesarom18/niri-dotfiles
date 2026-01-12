@@ -1,83 +1,79 @@
 return {
-    {
-        "nvim-treesitter/nvim-treesitter",
-        event = { "BufReadPre", "BufNewFile" },
-        build = ":TSUpdate",
-        config = function()
-            -- Import nvim-treesitter plugin
-            local treesitter = require("nvim-treesitter.configs")
+  {
+    "nvim-treesitter/nvim-treesitter",
+    lazy = false,
+    build = ":TSUpdate",
+    config = function()
+      local ts = require("nvim-treesitter")
 
-            -- Configure treesitter
-            treesitter.setup({ -- Enable syntax highlighting
-                highlight = {
-                    enable = true,
-                },
-                -- Enable indentation
-                indent = { enable = true },
+      -- Languages you use
+      local parsers = {
+        "json",
+        "javascript",
+        "typescript",
+        "tsx",
+        "go",
+        "yaml",
+        "html",
+        "css",
+        "python",
+        "http",
+        "prisma",
+        "markdown",
+        "markdown_inline",
+        "svelte",
+        "graphql",
+        "bash",
+        "lua",
+        "vim",
+        "dockerfile",
+        "gitignore",
+        "query",
+        "vimdoc",
+        "c",
+        "java",
+        "rust",
+        "ron",
+      }
 
-                -- Ensure these languages parsers are installed
-                ensure_installed = {
-                    "json",
-                    "javascript",
-                    "typescript",
-                    "tsx",
-                    "go",
-                    "yaml",
-                    "html",
-                    "css",
-                    "python",
-                    "http",
-                    "prisma",
-                    "markdown",
-                    "markdown_inline",
-                    "svelte",
-                    "graphql",
-                    "bash",
-                    "lua",
-                    "vim",
-                    "dockerfile",
-                    "gitignore",
-                    "query",
-                    "vimdoc",
-                    "c",
-                    "java",
-                    "rust",
-                    "ron",
-                },
-                incremental_selection = {
-                    enable = true,
-                    keymaps = {
-                        init_selection = "<C-space>",
-                        node_incremental = "<C-space>",
-                        scope_incremental = false,
-                    },
-                },
-                additional_vim_regex_highlighting = false,
-            })
+      -- Install parsers asynchronously (no-op if already installed)
+      ts.install(parsers)
+
+      local group = vim.api.nvim_create_augroup("TreesitterStart", { clear = true })
+
+      vim.api.nvim_create_autocmd("FileType", {
+        group = group,
+        callback = function(ev)
+          local lang =
+            vim.treesitter.language.get_lang(ev.match) or ev.match
+
+          -- Start treesitter for this buffer only
+          local ok = pcall(vim.treesitter.start, ev.buf, lang)
+          if ok then
+            -- Treesitter-based indentation
+            vim.bo[ev.buf].indentexpr =
+              "v:lua.vim.treesitter.indentexpr()"
+          end
         end,
+      })
+    end,
+  },
+
+  -- Auto-close and auto-rename tags (depends on treesitter)
+  {
+    "windwp/nvim-ts-autotag",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    ft = {
+      "html",
+      "xml",
+      "javascript",
+      "typescript",
+      "javascriptreact",
+      "typescriptreact",
+      "svelte",
     },
-    -- NOTE: Js,ts,jsx,tsx auto close tags
-    {
-        "windwp/nvim-ts-autotag",
-        enabled = true,
-        ft = { "html", "xml", "javascript", "typescript", "javascriptreact", "typescriptreact", "svelte" },
-        config = function()
-            -- Independent nvim-ts-autotag setup
-            require("nvim-ts-autotag").setup({
-                opts = {
-                    enable_close = true,           -- Auto-close tags
-                    enable_rename = true,          -- Auto-rename pairs
-                    enable_close_on_slash = false, -- Disable auto-close on trailing `</`
-                },
-                per_filetype = {
-                    ["html"] = {
-                        enable_close = true, -- Disable auto-closing for HTML
-                    },
-                    ["typescriptreact"] = {
-                        enable_close = true, -- Explicitly enable auto-closing (optional, defaults to `true`)
-                    },
-                },
-            })
-        end,
-    },
+    config = function()
+      require("nvim-ts-autotag").setup()
+    end,
+  },
 }

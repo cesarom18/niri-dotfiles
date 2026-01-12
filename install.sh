@@ -14,7 +14,7 @@ sudo rm -rf /etc/xdg/nvim
 
 # Install core packages
 echo "Instalando paquetes"
-sudo pacman -S swaybg trash-cli mako foot foot-terminfo wl-clipboard fastfetch lazygit nvim fd ripgrep unzip nodejs npm
+sudo pacman -S swaybg trash-cli mako foot foot-terminfo wl-clipboard fastfetch lazygit nvim tree-sitter fd ripgrep unzip nodejs npm
 
 # Install wallpaper
 echo "Instalando wallpaper"
@@ -23,6 +23,7 @@ cp -r ./wallpaper.png ~/Pictures
 # Copy config system files
 echo "Instalando archivos de configuraciono"
 cp -r .config/* ~/.config
+cp -r .fonts/* ~/.fonts
 
 # Copy ly config file
 echo "Instalando archivo de configuracion de ly"

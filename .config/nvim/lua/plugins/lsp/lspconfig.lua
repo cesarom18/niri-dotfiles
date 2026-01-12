@@ -123,17 +123,5 @@ return {
             },
         })
         vim.lsp.enable("ts_ls")
-        -- Go LSP
-        vim.lsp.config("gopls", {
-            capabilities = capabilities,
-            settings = {
-                gopls = {
-                    analyses = { unusedparams = true },
-                    staticcheck = true,
-                    gofumpt = true,
-                },
-            },
-        })
-        vim.lsp.enable("gopls")
     end,
 }

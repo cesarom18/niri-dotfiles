@@ -33,7 +33,6 @@ return {
                 "html",                      -- HTML
                 "cssls",                     -- CSS
                 "tailwindcss",               -- TailwindCSS
-                "gopls",                     -- Go
                 "angularls",                 -- Angular
                 "emmet_ls",                  -- Emmet
                 "emmet_language_server",     -- Alternative Emmet
