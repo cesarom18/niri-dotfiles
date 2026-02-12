@@ -168,4 +168,9 @@ binds {
 hotkey-overlay {
     skip-at-startup // Skip show "Important Hotkeys"
 }
+gestures {
+    hot-corners {
+        off
+    }
+}
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
