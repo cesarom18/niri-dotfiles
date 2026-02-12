@@ -4,7 +4,7 @@ sudo pacman -Syu
 
 # Uninstall packages
 echo "Desinstalando paquetes post-instalacion archinstall"
-sudo pacman -Rns htop vim dunst xdg-desktop-gnome nautilus swaylock
+sudo pacman -Rns htop vim dunst xdg-desktop-portal-gnome nautilus swaylock
 
 # Remove folders
 echo "Eliminando directorios no usados"
@@ -14,7 +14,7 @@ sudo rm -rf /etc/xdg/nvim
 
 # Install core packages
 echo "Instalando paquetes"
-sudo pacman -S swaybg trash-cli mako foot foot-terminfo wl-clipboard fastfetch lazygit nvim tree-sitter fd ripgrep unzip nodejs npm
+sudo pacman -S swaybg xdg-desktop-portal xdg-desktop-portal-wlr trash-cli mako foot foot-terminfo wl-clipboard fastfetch lazygit nvim tree-sitter fd ripgrep unzip nodejs npm
 
 # Install wallpaper
 echo "Instalando wallpaper"
