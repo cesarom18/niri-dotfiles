@@ -12,7 +12,7 @@ return {
             callback = function(ev)
                 local opts = { buffer = ev.buf, silent = true }
 
-                opts.desc = "Show LSP references"
+                opts.desc = "Show LSP reference"
                 vim.keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts)
                 opts.desc = "Go to declaration"
                 vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
@@ -26,8 +26,6 @@ return {
                 vim.keymap.set({ "n", "v" }, "<leader>vca", vim.lsp.buf.code_action, opts)
                 opts.desc = "Smart rename"
                 vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-                opts.desc = "Show buffer diagnostics"
-                vim.keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts)
                 opts.desc = "Show line diagnostics"
                 vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
                 opts.desc = "Show documentation"
