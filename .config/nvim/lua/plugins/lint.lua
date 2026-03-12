@@ -36,7 +36,7 @@ return {
 			end,
 		}
 
-		-- Autocmd for lint
+		-- Autocmd para lint
 		vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
 			group = lint_augroup,
 			callback = function()
@@ -44,7 +44,7 @@ return {
 			end,
 		})
 
-		-- Keymap
+		-- Keymap manual
 		vim.keymap.set("n", "<leader>l", function()
 			lint.try_lint()
 		end, { desc = "Trigger linting for current file" })
