@@ -23,7 +23,6 @@ return {
                 dashboard.button("r", "  Recent Files", ":Telescope oldfiles<CR>"),
                 dashboard.button("l", "  Lazy", ":Lazy<CR>"),
                 dashboard.button("m", "󰙅  Mason", ":Mason<CR>"),
-                dashboard.button("L", "  LazyGit", ":LazyGit<CR>"),
                 dashboard.button("c", "  Config", ":Telescope find_files cwd=~/.config/nvim<CR>"),
                 dashboard.button("q", "󰈆  Quit", ":qa<CR>"),
             }

@@ -87,22 +87,6 @@ return {
         })
         vim.lsp.enable("pyright")
         -- Emmet Language Servers
-        vim.lsp.config("emmet_language_server", {
-            capabilities = capabilities,
-            filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "pug", "typescriptreact" },
-            init_options = {
-                includeLanguages = {},
-                excludeLanguages = {},
-                extensionsPath = {},
-                preferences = {},
-                showAbbreviationSuggestions = true,
-                showExpandedAbbreviation = "always",
-                showSuggestionsAsSnippets = false,
-                syntaxProfiles = {},
-                variables = {},
-            },
-        })
-        vim.lsp.enable("emmet_language_server")
         vim.lsp.config("emmet_ls", {
             capabilities = capabilities,
             filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
