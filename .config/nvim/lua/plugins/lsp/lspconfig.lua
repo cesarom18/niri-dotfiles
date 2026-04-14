@@ -2,7 +2,7 @@ return {
 	"neovim/nvim-lspconfig",
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
-		"saghen/blink.cmp",
+"hrsh7th/cmp-nvim-lsp",
 		{ "antosha417/nvim-lsp-file-operations", config = true },
 	},
 
@@ -58,7 +58,7 @@ return {
 		})
 
 		-- Setup LSP servers
-		local capabilities = require("blink.cmp").get_lsp_capabilities()
+		local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 		-- Lua LSP
 		vim.lsp.config("lua_ls", {
