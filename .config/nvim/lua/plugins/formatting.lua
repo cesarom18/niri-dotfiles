@@ -39,7 +39,6 @@ return {
                 lua = { "stylua" },
                 python = { "black" },
                 markdown = { "prettier", "markdown-toc" },
-                -- ["markdown.mdx"] = { "prettier", "markdownlint", "markdown-toc" },
             },
         })
 
