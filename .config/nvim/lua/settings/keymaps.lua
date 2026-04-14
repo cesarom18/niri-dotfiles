@@ -17,12 +17,6 @@ vim.keymap.set("v", "p", '"_dp', opts) -- Paste without replacing clipboard cont
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]], { desc = "Delete text without change the clipboard" })
 vim.keymap.set("n", "x", '"_x', opts) -- Delete character without save it in clipboard
 vim.keymap.set("n", "<C-c>", ":nohl<CR>", { desc = "Clear search highlight words in normal mode", silent = true })
-vim.keymap.set(
-	"n",
-	"<leader>s",
-	[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
-	{ desc = "Replace word cursor matches is on current buffer/file" }
-)
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",
 	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),

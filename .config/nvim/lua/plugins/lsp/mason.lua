@@ -4,7 +4,7 @@ return {
 	dependencies = {
 		"williamboman/mason-lspconfig.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
-		"hrsh7th/cmp-nvim-lsp",
+		"saghen/blink.cmp",
 		"neovim/nvim-lspconfig",
 	},
 
@@ -46,7 +46,6 @@ return {
 			ensure_installed = {
 				"prettier", -- JS/TS/HTML/CSS formatter
 				"stylua", -- Lua formatter
-				"isort", -- Python import sorter
 				"ruff", -- Python linter
 				"black", -- Python formatter
 				"clangd", -- C/C++ LSP
